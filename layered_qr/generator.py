@@ -236,35 +236,3 @@ def generate_visual_layered_qrs(data: str, n: int, k: int, output_dir: str, file
             print(f"Saved: {filepath}")
         except Exception as e:
             print(f"Error saving image {filepath}: {e}")
-
-# Example Usage (Optional - can be run if the script is executed directly)
-if __name__ == '__main__':
-    # Define parameters
-    data_to_encode = "https://google.com"
-    num_layers = 5 # Total layers (n)
-    required_layers = 3 # Layers needed for reconstruction (k)
-    output_directory = "output_layers"
-    file_prefix = "layer_"
-    module_pixel_size = 10 # Size of each black/white square
-    quiet_zone_size = 4 # Standard quiet zone border width
-
-    # Create a dummy QR code just to estimate version needed
-    qr_check = qrcode.QRCode(version=None, error_correction=qrcode.constants.ERROR_CORRECT_L)
-    qr_check.add_data(data_to_encode)
-    qr_check.make(fit=True)
-    estimated_version = qr_check.version
-    print(f"Estimated QR version needed for '{data_to_encode}': {estimated_version}")
-
-    # Generate the layers
-    generate_visual_layered_qrs(
-        data=data_to_encode,
-        n=num_layers,
-        k=required_layers,
-        output_dir=output_directory,
-        filename_prefix=file_prefix,
-        box_size=module_pixel_size,
-        border=quiet_zone_size
-    )
-    print("\\nLayer generation complete.")
-    print(f"Check the '{output_directory}' folder for the generated PNG images.")
-

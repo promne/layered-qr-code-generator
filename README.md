@@ -31,25 +31,17 @@ This project generates layered PNG images based on the principles of visual cryp
 
 ## Usage
 
-The `generator.py` script contains the core logic and an example usage block.
+To generate layered QR codes, use the following command:
 
-1.  **Modify Parameters (Optional):**
-    Open `generator.py` and adjust the parameters within the `if __name__ == '__main__':` block:
-    *   `data_to_encode`: The string data you want to encode.
-    *   `num_layers`: Total number of layers to generate (n).
-    *   `required_layers`: Number of layers needed to reconstruct the QR code (k).
-    *   `output_directory`: Folder where the layer images will be saved.
-    *   `file_prefix`: Prefix for the output image filenames.
-    *   `module_pixel_size`: Size of each QR code module in pixels.
-    *   `quiet_zone_size`: Width of the border around the QR code (in modules).
+```bash
+python main.py "Visual Layer Test!" -n 5 -k 3
+```
 
-2.  **Run the script:**
-    ```bash
-    python generator.py
-    ```
+*   `"Visual Layer Test!"`: The string data you want to encode.
+*   `-n 5`: Total number of layers to generate (n).
+*   `-k 3`: Number of layers needed to reconstruct the QR code (k).
 
-3.  **Output:**
-    The script will print the QR code version used and the progress. The generated PNG layer images will be saved in the specified `output_directory` (default is `output_layers/`).
+The generated PNG layer images will be saved in the `output_layers/` directory.
 
 ## How it Works
 
